@@ -34,7 +34,7 @@
 	}
 */
 document.getElementById('status').innerText = 'You are not authenticated yet';
-let accessToken = '';
+let accessToken = '',userId = '';
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '671208846722818',
@@ -58,7 +58,8 @@ let accessToken = '';
   function authenticate(){
   	FB.login(function(response){
 		if (response.status === 'connected') {
-			access_token = response.authResponse.accessToken;
+			accessToken = response.authResponse.accessToken;
+			userId = response.authResponse.userId;
 			document.getElementById('status').innerText = 'You are authenticated';
 		} else {
 		// The person is not logged into your webpage or we are unable to tell. 
@@ -69,7 +70,7 @@ let accessToken = '';
   fetchStories(){
   	const instaId = document.getElementById('instaid').value;
   	if(instaid){
-  		fetch(``)
+  		fetch(`https://graph.facebook.com/${userId}/stories?access_token=${accessToken}`)
   		.then((res)=>res.json())
   		.then(res=>{
   			let html = '';
