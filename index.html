@@ -9,7 +9,7 @@
 </body>
 <script>
 	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('code') > -1)  ){
-		const token = window.location.href.split('?code')[1];
+		const token = window.location.href.split('?code=')[1];
 		fetch(`https://api.instagram.com/v1/users/abhaysrivastav007/?access_token=${token}`)
 		.then((res)=>res.json())
 		.then((res)=>{
