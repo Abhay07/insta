@@ -67,7 +67,7 @@ let accessToken = '',userId = '';
 	},{scope:'instagram_basic,instagram_manage_insights,pages_show_list'});
   }
 
-  fetchStories(){
+  function fetchStories(){
   	const instaId = document.getElementById('instaid').value;
   	if(instaid){
   		fetch(`https://graph.facebook.com/${userId}/stories?access_token=${accessToken}`)
