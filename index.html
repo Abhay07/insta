@@ -6,14 +6,18 @@
 </head>
 <body>
 	<button onclick="authenticate()">Authenticate</button>
+	<div id="status">
+		
+	</div>
 	<div>
-		<code id="data">
-			
-		</code>
+		<input type="text" placeholder="Enter Insta id" id="instaid"/><button onclick="fetchStories()">Fetch stories</button>
+	</div>
+	<div id="storyIds">
+		
 	</div>
 </body>
 <script>
-	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
+/*	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
 		const token = window.location.href.split('#access_token=')[1];
 		fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`)
 		.then((res)=>res.json())
@@ -28,6 +32,61 @@
 	function authenticate(){
 		window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=0b0a0d9446a04207b913523cfcd0f739&redirect_uri=https://abhay07.github.io/insta/&response_type=token';
 	}
+*/
+document.getElementById('status').innerText = 'You are not authenticated yet';
+let accessToken = '';
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '671208846722818',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v4.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+  function authenticate(){
+  	FB.login(function(response){
+		if (response.status === 'connected') {
+			access_token = response.authResponse.accessToken;
+			document.getElementById('status').innerText = 'You are authenticated';
+		} else {
+		// The person is not logged into your webpage or we are unable to tell. 
+		}
+	},{scope:'instagram_basic,instagram_manage_insights,pages_show_list'});
+  }
+
+  fetchStories(){
+  	const instaId = document.getElementById('instaid').value;
+  	if(instaid){
+  		fetch(``)
+  		.then((res)=>res.json())
+  		.then(res=>{
+  			let html = '';
+  			for(let i=0;i<res.data.length;i++){
+  				html+=`<div>${res.data[i].id}</div>`
+  			}
+  			document.getElementById('storyIds').innerHTML = html;
+  		})
+  		.catch(err=>{
+  			console.log(err);
+  		})
+  	}
+  	else{
+  		document.getElementById('status').innerText = 'Please enter instaid';
+  	}
+  }
+</script>
 	
 </script>
 </html>
