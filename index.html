@@ -9,12 +9,13 @@
 	<div id="status">
 		
 	</div>
-	<div>
+  <div>Token is <span id="token"></span></div>
+<!-- 	<div>
 		<input type="text" placeholder="Enter Insta id" id="instaid"/><button onclick="fetchStories()">Fetch stories</button>
 	</div>
 	<div id="storyIds">
 		
-	</div>
+	</div> -->
 </body>
 <script>
 /*	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
@@ -60,6 +61,7 @@ let accessToken = '',userId = '';
 		if (response.status === 'connected') {
 			accessToken = response.authResponse.accessToken;
 			userId = response.authResponse.userId;
+      document.getElementById('token').innerText = accessToken;
 			document.getElementById('status').innerText = 'You are authenticated';
 		} else {
 		// The person is not logged into your webpage or we are unable to tell. 
@@ -67,7 +69,7 @@ let accessToken = '',userId = '';
 	},{scope:'instagram_basic,instagram_manage_insights,pages_show_list'});
   }
 
-  function fetchStories(){
+ /* function fetchStories(){
   	const instaId = document.getElementById('instaid').value;
   	if(instaid){
   		fetch(`https://graph.facebook.com/${userId}/stories?access_token=${accessToken}`)
@@ -86,7 +88,7 @@ let accessToken = '',userId = '';
   	else{
   		document.getElementById('status').innerText = 'Please enter instaid';
   	}
-  }
+  }*/
 </script>
 	
 </script>
