@@ -5,22 +5,26 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	<button onclick="authenticate()">Authenticate</button>
+	<code id="data">
+		
+	</code>
 </body>
 <script>
 	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
 		const token = window.location.href.split('#access_token=')[1];
-		fetch(`https://api.instagram.com/v1/users/self/?access_token=${token}`)
+		fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`)
 		.then((res)=>res.json())
 		.then((res)=>{
-			console.log(res);
+			document.getElementById('data').html = res;
 		})
 		.catch(err=>{
 			console.log(err);
 		})
 	}
-	else{
-		window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=0b0a0d9446a04207b913523cfcd0f739&redirect_uri=https://abhay07.github.io/insta/&response_type=token'	
+
+	function authenticate(){
+		window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=0b0a0d9446a04207b913523cfcd0f739&redirect_uri=https://abhay07.github.io/insta/&response_type=token';
 	}
 	
 </script>
