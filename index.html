@@ -6,9 +6,11 @@
 </head>
 <body>
 	<button onclick="authenticate()">Authenticate</button>
-	<code id="data">
-		
-	</code>
+	<div>
+		<code id="data">
+			
+		</code>
+	</div>
 </body>
 <script>
 	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
@@ -16,7 +18,7 @@
 		fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`)
 		.then((res)=>res.json())
 		.then((res)=>{
-			document.getElementById('data').html = res;
+			document.getElementById('data').html = JSON.stringify(res);
 		})
 		.catch(err=>{
 			console.log(err);
