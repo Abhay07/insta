@@ -18,6 +18,10 @@
 	</div> -->
 </body>
 <script>
+  if(window.location.href.indexOf('#access_token=')>-1){
+    const token = window.location.href.split('#access_token=')[1];
+    document.getElementById('token').innerText = accessToken;
+  }
 /*	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
 		const token = window.location.href.split('#access_token=')[1];
 		fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}`)
