@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<button onclick="authenticate()">Authenticate</button>
+  <a href="https://www.facebook.com/v4.0/dialog/oauth?client_id=389496751725269&redirect_uri=https://abhay07.github.io/insta">Authenticate</a>
 	<div id="status">
 		
 	</div>
@@ -34,7 +34,7 @@
 		window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=0b0a0d9446a04207b913523cfcd0f739&redirect_uri=https://abhay07.github.io/insta/&response_type=token';
 	}
 */
-document.getElementById('status').innerText = 'You are not authenticated yet';
+/*document.getElementById('status').innerText = 'You are not authenticated yet';
 let accessToken = '',userId = '';
   window.fbAsyncInit = function() {
     FB.init({
@@ -68,6 +68,7 @@ let accessToken = '',userId = '';
 		}
 	},{scope:'instagram_basic,instagram_manage_insights,pages_show_list'});
   }
+  */
 
  /* function fetchStories(){
   	const instaId = document.getElementById('instaid').value;
@@ -89,7 +90,5 @@ let accessToken = '',userId = '';
   		document.getElementById('status').innerText = 'Please enter instaid';
   	}
   }*/
-</script>
-	
 </script>
 </html>
