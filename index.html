@@ -20,7 +20,7 @@
 <script>
   if(window.location.href.indexOf('#access_token=')>-1){
     const token = window.location.href.split('#access_token=')[1];
-    document.getElementById('token').innerText = accessToken;
+    document.getElementById('token').innerText = token;
   }
 /*	if((window.location.href.indexOf('error') > -1 )|| (window.location.href.indexOf('#access_token=') > -1)  ){
 		const token = window.location.href.split('#access_token=')[1];

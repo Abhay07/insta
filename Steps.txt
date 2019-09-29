@@ -1,0 +1,10 @@
+1. In order to use instagram grapi, User's business/instagram account should be connected to a facebook business/creator account and vice versa.
+2. Create an fb app, and add product facebook login, and in facebook login product, put valid redirect uri as the url of website, from which you will trigger login.
+3. Trigger Login and provide permissions through your website.
+4. After login get the access token.
+5. To get the instagram account id 
+https://graph.facebook.com/v3.1/me?access_token={access_token}&fields=accounts%7Binstagram_business_account%2Cname%2Cid%2Cpicture%7Burl%7D%7D
+6. To get the stories id
+https://graph.facebook.com/v3.1/{instagam_account_id}/stories?access_token={access_token}
+7. To get the details of stories
+https://graph.facebook.com/v3.1/{story_id}?fields=id,media_type,media_url,owner,timestamp&access_token={access_token}
